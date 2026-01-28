@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+       ║  📝 ИНСТРУКЦИЯ: ЗАГОЛОВОК СТРАНИЦЫ                                           ║
+       ║  Замените "Имя Фамилия" на ваше имя и фамилию                                ║
+       ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+  <title>Светлана Акимова — Психолог</title>
+  <meta name="description" content="Психолог, специалист репарационной психологии и терапии. Индивидуальные консультации и сопровождение.">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Светлана Акимова — Психолог">
+  <meta property="og:description" content="Психолог, специалист репарационной психологии и терапии. Индивидуальные консультации и сопровождение.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --background: hsl(40, 20%, 97%);
+      --foreground: hsl(0, 0%, 15%);
+      --card: hsl(40, 25%, 96%);
+      --primary: hsl(352, 75%, 47%);
+      --primary-foreground: hsl(0, 0%, 100%);
+      --muted: hsl(40, 10%, 90%);
+      --muted-foreground: hsl(0, 0%, 45%);
+      --border: hsl(40, 15%, 88%);
+      --wine-dark: hsl(352, 80%, 35%);
+      --wine-light: hsl(352, 70%, 60%);
+      --cream-dark: hsl(40, 20%, 90%);
+      --shadow-soft: 0 4px 20px -4px rgba(0,0,0,0.08);
+      --shadow-card: 0 8px 30px -8px rgba(0,0,0,0.1);
+      --shadow-wine: 0 8px 30px -8px rgba(197,29,52,0.25);
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--wine-light));
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+    
+    /* Particle Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, var(--primary), transparent);
+      border-radius: 50%;
+      opacity: 0.12;
+      animation: float 20s infinite ease-in-out;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+    
+    /* Fade-in Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+    
+    /* Header */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(249, 247, 244, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    header.scrolled {
+      background: rgba(249, 247, 244, 0.95);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    
+    header .container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 1rem; padding-bottom: 1rem;
+    }
+    .logo { 
+      font-size: 1.25rem; 
+      font-weight: 500; 
+      color: var(--primary); 
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .logo:hover { transform: scale(1.05); }
+    nav { display: flex; gap: 2rem; }
+    nav a { 
+      color: var(--muted-foreground); 
+      text-decoration: none; 
+      font-weight: 500; 
+      transition: color 0.2s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: var(--primary); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--primary); color: var(--primary-foreground);
+      padding: 0.625rem 1.25rem; border-radius: 9999px;
+      font-weight: 500; text-decoration: none; 
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+    
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn:hover { 
+      background: var(--wine-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(197,29,52,0.3);
+    }
+    .btn-outline {
+      background: var(--primary-foreground); color: var(--primary);
+      border: none;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.9); }
+    .btn-large { padding: 1rem 2rem; font-size: 1.125rem; }
+    
+    @media (max-width: 768px) {
+      nav { display: none; }
+    }
+    
+    /* Hero */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 6rem 0 3rem; position: relative; overflow: hidden;
+    }
+    .hero-bg-1 { 
+      position: absolute; top: 5rem; right: 0; width: 24rem; height: 24rem; 
+      background: rgba(197,29,52,0.05); border-radius: 50%; filter: blur(48px);
+      animation: pulse 8s ease-in-out infinite;
+    }
+    .hero-bg-2 { 
+      position: absolute; bottom: 5rem; left: 0; width: 16rem; height: 16rem; 
+      background: rgba(197,29,52,0.03); border-radius: 50%; filter: blur(32px);
+      animation: pulse 6s ease-in-out infinite reverse;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+    .hero-content h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.1; margin-bottom: 1rem; color: var(--primary); }
+    .hero-content p.subtitle { font-size: 1.5rem; color: var(--foreground); opacity: 0.8; margin-bottom: 1.5rem; }
+    .hero-stats { margin-bottom: 2rem; }
+    .hero-stats .number { font-size: 1.875rem; font-weight: 600; color: var(--primary); }
+    .hero-stats .label { font-size: 1.125rem; color: var(--muted-foreground); margin-left: 0.75rem; }
+    .hero-image { 
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .hero-image-bg { 
+      position: absolute; top: -1rem; right: -1rem; width: 100%; height: 100%; 
+      background: rgba(197,29,52,0.1); border-radius: 1rem; 
+      transform: rotate(3deg);
+      transition: transform 0.5s ease;
+    }
+    .hero-image:hover .hero-image-bg {
+      transform: rotate(6deg) scale(1.02);
+    }
+    .hero-image-card {
+      position: relative; background: var(--cream-dark); border-radius: 1rem;
+      aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero-image:hover .hero-image-card {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px -8px rgba(0,0,0,0.15);
+    }
+    .hero-image-card .initials {
+      width: 8rem; height: 8rem; border-radius: 50%; background: rgba(197,29,52,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+    .hero-image:hover .initials {
+      transform: scale(1.1);
+    }
+    
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-image { order: -1; max-width: 400px; margin: 0 auto; }
+      .hero-content h1 { font-size: 2.5rem; }
+    }
+    
+    /* Sections */
+    section { padding: 3rem 0; }
+    section h2 { font-size: 2.5rem; font-weight: 400; text-align: center; margin-bottom: 1.5rem; }
+    section .section-subtitle { font-size: 1.25rem; color: var(--muted-foreground); text-align: center; max-width: 42rem; margin: 0 auto 2.5rem; }
+    
+    /* Quote */
+    .quote-block {
+      background: var(--card); border-radius: 1rem; padding: 2rem 2.5rem;
+      box-shadow: var(--shadow-card); max-width: 56rem; margin: 0 auto 3rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .quote-block::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); }
+    .quote-block:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px -8px rgba(0,0,0,0.15);
+    }
+    .quote-block p { font-size: 1.5rem; font-style: italic; color: var(--foreground); opacity: 0.9; }
+    
+    /* Cards Grid */
+    .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .card {
+      background: var(--card); padding: 1.25rem; border-radius: 0.75rem;
+      box-shadow: var(--shadow-soft); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .card:hover { 
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px -8px rgba(0,0,0,0.15);
+    }
+    .card-number {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(197,29,52,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-weight: 600; margin-bottom: 0.75rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .card:hover .card-number {
+      transform: scale(1.1);
+      background: rgba(197,29,52,0.2);
+    }
+    .card h4 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .card p { color: var(--muted-foreground); font-size: 1.125rem; }
+    
+    @media (max-width: 1024px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .cards-grid { grid-template-columns: 1fr; } }
+    
+    /* Accordion */
+    .accordion { max-width: 56rem; margin: 0 auto; }
+    .accordion-item {
+      background: linear-gradient(135deg, rgba(197,29,52,0.05), var(--card), rgba(197,29,52,0.1));
+      border: 1px solid rgba(197,29,52,0.1); border-radius: 1rem;
+      margin-bottom: 1rem; overflow: hidden; box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .accordion-item:hover {
+      transform: translateX(5px);
+      box-shadow: var(--shadow-card);
+    }
+    .accordion-trigger {
+      width: 100%; padding: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
+      background: none; border: none; cursor: pointer; text-align: left;
+    }
+    .accordion-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--primary);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .accordion-item:hover .accordion-icon {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(197,29,52,0.3);
+    }
+    .accordion-icon svg { width: 1.25rem; height: 1.25rem; stroke: var(--primary-foreground); fill: none; stroke-width: 2; }
+    .accordion-trigger span { font-size: 1.5rem; color: var(--foreground); }
+    .accordion-trigger::after {
+      content: ''; margin-left: auto; width: 1rem; height: 1rem;
+      border-right: 2px solid var(--muted-foreground); border-bottom: 2px solid var(--muted-foreground);
+      transform: rotate(45deg); transition: transform 0.2s;
+    }
+    .accordion-item.open .accordion-trigger::after { transform: rotate(-135deg); }
+    .accordion-content { padding: 0 1.5rem 1.5rem; display: none; }
+    .accordion-item.open .accordion-content { display: block; }
+    .accordion-content ul { list-style: none; }
+    .accordion-content li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 1.125rem; color: var(--foreground); opacity: 0.8; margin-bottom: 0.75rem; }
+    .accordion-content li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); margin-top: 0.6rem; flex-shrink: 0; }
+    
+    /* Packages */
+    #packages { background: rgba(40, 15%, 92%, 0.3); }
+    .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 75rem; margin: 0 auto; }
+    .package {
+      background: var(--card); border-radius: 1rem; padding: 1.5rem;
+      display: flex; flex-direction: column; box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .package::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--wine-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .package:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .package:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-wine);
+    }
+    
+    .package.highlighted {
+      background: var(--primary); color: var(--primary-foreground);
+      transform: scale(1.05); box-shadow: var(--shadow-wine);
+    }
+    .package.highlighted:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+    .package.highlighted .package-sessions,
+    .package.highlighted .package-period { color: rgba(255,255,255,0.8); }
+    .package.highlighted .feature-text { color: rgba(255,255,255,0.9); }
+    .package-badge {
+      position: absolute; top: 0.2rem; left: 50%; transform: translateX(-50%);
+      background: var(--wine-light); color: var(--primary-foreground);
+      padding: 0.25rem 1rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;
+    }
+    .package { position: relative; }
+    .package h3 { font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .package-sessions { font-size: 1rem; color: var(--muted-foreground); margin-bottom: 1.5rem; }
+    .package-price { font-size: 2rem; font-weight: 600; }
+    .package-period { font-size: 0.875rem; color: var(--muted-foreground); margin-left: 0.25rem; }
+    .package-features { list-style: none; margin: 1.5rem 0; flex-grow: 1; }
+    .package-features li { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .package-features svg { width: 1rem; height: 1rem; stroke: var(--primary); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 0.25rem; }
+    .package.highlighted .package-features svg { stroke: var(--primary-foreground); }
+    .feature-text { font-size: 1rem; color: var(--foreground); opacity: 0.8; }
+    .package .btn { width: 100%; justify-content: center; margin-top: auto; }
+    
+    .service-item { border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 0.75rem; }
+    .service-item:last-child { border-bottom: none; margin-bottom: 0; }
+    .service-label { font-size: 1rem; color: var(--foreground); opacity: 0.9; }
+    .service-row { display: flex; justify-content: space-between; align-items: center; margin-top: 0.25rem; }
+    .service-duration { font-size: 0.875rem; color: var(--muted-foreground); }
+    .service-price { font-size: 1rem; font-weight: 500; color: var(--primary); }
+    
+    @media (max-width: 1024px) { .packages-grid { grid-template-columns: repeat(2, 1fr); } .package.highlighted { transform: none; } .package.highlighted:hover { transform: translateY(-10px); } }
+    @media (max-width: 640px) { .packages-grid { grid-template-columns: 1fr; } }
+    
+    /* Support Info */
+    .support-toggle {
+      max-width: 56rem; margin: 2.5rem auto 0;
+      background: var(--card); border-radius: 0.75rem; box-shadow: var(--shadow-soft); overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .support-toggle:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px -8px rgba(0,0,0,0.15);
+    }
+    .support-trigger {
+      width: 100%; padding: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: none; border: none; cursor: pointer; font-weight: 500; color: var(--foreground);
+    }
+    .support-trigger svg { width: 1.25rem; height: 1.25rem; stroke: var(--primary); fill: none; stroke-width: 2; }
+    .support-content { padding: 0 2rem 2rem; display: none; }
+    .support-toggle.open .support-content { display: block; }
+    .support-section { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .support-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .support-section h4 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem; }
+    .support-section p { font-size: 1.125rem; color: var(--muted-foreground); line-height: 1.7; }
+    .support-section ul { list-style: none; }
+    .support-section li { font-size: 1.125rem; color: var(--muted-foreground); margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .support-section a { color: var(--primary); text-decoration: none; }
+    .support-section a:hover { text-decoration: underline; }
+    .highlight { font-weight: 600; color: var(--foreground); }
+    
+    /* Contact */
+    .contact-card {
+      max-width: 42rem; margin: 0 auto;
+      background: linear-gradient(135deg, rgba(197,29,52,0.05), var(--card), rgba(197,29,52,0.1));
+      border: 1px solid rgba(197,29,52,0.1); border-radius: 1.5rem;
+      padding: 3rem; text-align: center; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-wine);
+    }
+    .contact-card .bg-circle-1 { position: absolute; top: 0; right: 0; width: 8rem; height: 8rem; background: rgba(197,29,52,0.1); border-radius: 50%; filter: blur(48px); }
+    .contact-card .bg-circle-2 { position: absolute; bottom: 0; left: 0; width: 6rem; height: 6rem; background: rgba(197,29,52,0.05); border-radius: 50%; filter: blur(32px); }
+    .contact-icon {
+      width: 4rem; height: 4rem; border-radius: 50%; background: rgba(197,29,52,0.1);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+    }
+    .contact-icon svg { width: 2rem; height: 2rem; stroke: var(--primary); fill: none; stroke-width: 2; }
+    .contact-card h3 { font-size: 2rem; margin-bottom: 1rem; }
+    .contact-card p { font-size: 1.125rem; color: var(--muted-foreground); margin-bottom: 2rem; max-width: 28rem; margin-left: auto; margin-right: auto; }
+    
+    /* Footer */
+    footer {
+      background: var(--card); border-top: 1px solid var(--border);
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin-bottom: 2rem;
+    }
+    footer h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 0.5rem; }
+    footer h4 { font-weight: 500; margin-bottom: 0.75rem; }
+    footer p { color: var(--muted-foreground); }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 0.5rem; }
+    footer a { 
+      color: var(--muted-foreground); 
+      text-decoration: none; 
+      transition: color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    footer a:hover { color: var(--primary); transform: translateX(3px); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-legal { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+    .footer-legal a { color: var(--muted-foreground); text-decoration: none; font-size: 0.875rem; }
+    .footer-legal span { color: var(--border); }
+    
+    @media (max-width: 768px) {
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress"></div>
+
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+           ║  📝 ИНСТРУКЦИЯ: ИМЯ В ШАПКЕ САЙТА                                            ║
+           ║  Замените "Имя Фамилия" на ваше имя и фамилию                                ║
+           ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+      <a href="#hero" class="logo">Светлана Акимова</a>
+      <nav>
+        <a href="#about">О терапии</a>
+        <a href="#packages">Пакеты</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+           ║  📝 ИНСТРУКЦИЯ: КНОПКА "ЗАПИСАТЬСЯ" В ШАПКЕ                                  ║
+           ║  Замените "https://t.me/" на вашу ссылку Telegram                            ║
+           ║  Пример: href="https://t.me/your_username"                                   ║
+           ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+      <a href="https://t.me/tina_akimova" target="_blank" class="btn">Записаться</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg-1"></div>
+    <div class="hero-bg-2"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+               ║  📝 ИНСТРУКЦИЯ: ГЛАВНОЕ ИМЯ НА СТРАНИЦЕ                                      ║
+               ║  Замените "Имя Фамилия" на ваше имя и фамилию                                ║
+               ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+          <h1>Светлана Акимова</h1>
+          <p class="subtitle">Психолог, специалист репарационной психологии и терапии</p>
+          <div class="hero-stats">
+            <span class="number">1000+</span>
+            <span class="label">часов практики</span>
+            <p style="color: var(--muted-foreground); font-size: 1.125rem; margin-top: 0.75rem;">Регулярная личная терапия и супервизии</p>
+          </div>
+          <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+               ║  📝 ИНСТРУКЦИЯ: КНОПКА "ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ"                          ║
+               ║  Замените "https://t.me/" на вашу ссылку Telegram                            ║
+               ║  Пример: href="https://t.me/your_username"                                   ║
+               ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+          <a href="https://t.me/tina_akimova" target="_blank" class="btn btn-large">Записаться на консультацию</a>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-bg"></div>
+          <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+               ║  📝 ИНСТРУКЦИЯ: ФОТОГРАФИЯ                                                   ║
+               ║  Чтобы добавить фото, замените блок ниже на:                                 ║
+               ║                                                                              ║
+               ║  <div class="hero-image-card" style="padding: 0; overflow: hidden;">         ║
+               ║    <img src="photo.jpg" alt="Фото психолога"                                 ║
+               ║         style="width: 100%; height: 100%; object-fit: cover;">               ║
+               ║  </div>                                                                      ║
+               ║                                                                              ║
+               ║  Где "photo.jpg" — путь к вашей фотографии                                   ║
+               ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+          <div class="hero-image-card" style="padding: 0; overflow: hidden;">
+            <img src="Photo.png" alt="Фото психолога"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="fade-in">О моём подходе</h2>
+      <p class="section-subtitle fade-in">Я не изменю вашу жизнь одним движением волшебной палочки и не решу все проблемы за вас, но помогу перевести проблемы на уровень задач. Сложные ситуации — неотъемлемая часть жизни. Моя цель — помочь вам уверенно справляться с любыми ситуациями в будущем.</p>
+      
+      <div class="quote-block fade-in">
+        <p>"Мы не можем изменить прошлое, но в наших силах изменить его влияние на настоящее, заменив привычные реакции осознанным выбором."</p>
+      </div>
+      
+      <h3 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;" class="fade-in">Терапия с индивидуальным сопровождением</h3>
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <div class="card-number">1</div>
+          <h4>Поддержка в моменте</h4>
+          <p>Вы не остаётесь один на один со сложными чувствами</p>
+        </div>
+        <div class="card fade-in">
+          <div class="card-number">2</div>
+          <h4>Индивидуальный план</h4>
+          <p>Подборка материалов индивидуально под ваш запрос</p>
+        </div>
+        <div class="card fade-in">
+          <div class="card-number">3</div>
+          <h4>Живой диалог</h4>
+          <p>Возможность задать вопрос или поделиться инсайтом</p>
+        </div>
+        <div class="card fade-in">
+          <div class="card-number">4</div>
+          <h4>Мониторинг прогресса</h4>
+          <p>Регулярные чек-листы для отслеживания динамики</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Therapy Details -->
+  <section id="therapy-details">
+    <div class="container">
+      <div class="accordion">
+        <div class="accordion-item open fade-in">
+          <button class="accordion-trigger">
+            <div class="accordion-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>С какими запросами работаю</span>
+          </button>
+          <div class="accordion-content">
+            <ul>
+              <li>Тревожность, навязчивые мысли</li>
+              <li>Апатия, отсутствие желаний и интереса к жизни</li>
+              <li>Сложности в отношениях: одиночество, зависимость, повторяющиеся сценарии</li>
+              <li>Финансы, увеличение дохода</li>
+              <li>Здоровье: психосоматика, симптомы, вопросы беременности</li>
+              <li>Низкая самооценка, самокритика, чувство вины и стыда</li>
+              <li>Борьба между «хочу» и «должен»</li>
+              <li>Неумение говорить «нет», отстаивать свои интересы</li>
+              <li>Страх ошибок и критики</li>
+              <li>Другое — все, что беспокоит вас и мешает получать удовольствие от жизни</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="accordion-item open fade-in">
+          <button class="accordion-trigger">
+            <div class="accordion-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>С чем не работаю</span>
+          </button>
+          <div class="accordion-content">
+            <ul>
+              <li>С психическими расстройствами</li>
+              <li>С алкогольной и наркотической зависимостью</li>
+              <li>С детьми и подростками до 18 лет</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="accordion-item open fade-in">
+          <button class="accordion-trigger">
+            <div class="accordion-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>Методы в работе</span>
+          </button>
+          <div class="accordion-content">
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem;">Символдрама</h4>
+              <p style="font-size: 1rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">(кататимно-имагинативная психотерапия)</p>
+              <p style="font-size: 1.125rem; color: var(--foreground); opacity: 0.8;">Позволяет мягко и бережно исцелять глубинные эмоциональные травмы</p>
+            </div>
+            <div>
+              <h4 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem;">Репарационная методика</h4>
+              <p style="font-size: 1.125rem; color: var(--foreground); opacity: 0.8;">Работа с внутриличностными конфликтами и эмоциональными травмами через проекции психики</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item open fade-in">
+          <button class="accordion-trigger">
+            <div class="accordion-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>Как проходит сессия</span>
+          </button>
+          <div class="accordion-content">
+            <p style="font-size: 1.125rem; color: var(--foreground); opacity: 0.8; line-height: 1.7;">Выявляем истинный запрос под глубинными убеждениями и защитными механизмами; исследуем причинно-следственные связи и слепые зоны; трансформируем негативные эмоциональные состояния, что позволяет вам легко получать желаемое (отношения, финансы, состояние и т.д.)</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item open fade-in">
+          <button class="accordion-trigger">
+            <div class="accordion-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span>Перенос сессии</span>
+          </button>
+          <div class="accordion-content">
+            <p style="font-size: 1.125rem; color: var(--foreground); opacity: 0.8; line-height: 1.7;">Перенос сессии возможен не менее чем за 24 часа до назначенного времени. При переносе менее чем за 24 часа сессия считается проведённой.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages">
+    <div class="container">
+      <h2 class="fade-in">Пакеты услуг</h2>
+      <p class="section-subtitle fade-in">Выберите подходящий формат работы для достижения ваших целей</p>
+      
+      <div class="packages-grid">
+        <div class="package fade-in">
+          <h3>Опора</h3>
+          <p class="package-sessions">2-3 сессии по 60-90 мин</p>
+          <div><span class="package-price">19 500</span><span class="package-period">₽/мес</span></div>
+          <ul class="package-features">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Внимание к эмоциональному состоянию</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Обратная связь и рекомендации</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Ответы на вопросы по теме сессии</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Поддержка в острый момент</span></li>
+          </ul>
+          <a href="https://t.me/tina_akimova" target="_blank" class="btn">Выбрать</a>
+        </div>
+        
+        <div class="package highlighted fade-in">
+          <div class="package-badge">Популярный</div>
+          <h3>Интенсив</h3>
+          <p class="package-sessions">2-3 сессии по 90 мин</p>
+          <div><span class="package-price">28 000</span><span class="package-period">₽/мес</span></div>
+          <ul class="package-features">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Всё из пакета «Опора»</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">2-4 персонализированных материала*</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">1-2 анализа свежих ситуаций</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Расширенная поддержка в чате</span></li>
+          </ul>
+          <a href="https://t.me/tina_akimova" target="_blank" class="btn btn-outline">Выбрать</a>
+        </div>
+        
+        <div class="package fade-in">
+          <h3>Уникальный</h3>
+          <p class="package-sessions">4 сессии по 90 мин</p>
+          <div><span class="package-price">от 35 000</span><span class="package-period">₽/мес</span></div>
+          <ul class="package-features">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Индивидуальный формат**</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Персональная программа</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Приоритетная поддержка</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="feature-text">Гибкий график сессий</span></li>
+          </ul>
+          <a href="https://t.me/tina_akimova" target="_blank" class="btn">Выбрать</a>
+        </div>
+        
+        <div class="package fade-in">
+          <h3>Индивидуальные сессии</h3>
+          <p class="package-sessions" style="opacity: 0;">—</p>
+          <div class="service-item">
+            <div class="service-label">Встреча знакомство</div>
+            <div class="service-row"><span class="service-duration">30 мин</span><span class="service-price">Бесплатно</span></div>
+          </div>
+          <div class="service-item">
+            <div class="service-label">Консультация (онлайн)</div>
+            <div class="service-row"><span class="service-duration">90 мин</span><span class="service-price">7 000 ₽</span></div>
+          </div>
+          <div class="service-item">
+            <div class="service-label">Консультация (онлайн)</div>
+            <div class="service-row"><span class="service-duration">60 мин</span><span class="service-price">5 000 ₽</span></div>
+          </div>
+          <div class="service-item">
+            <div class="service-label">Консультация (очно)</div>
+            <div class="service-row"><span class="service-duration">90 мин</span><span class="service-price">10 000 ₽</span></div>
+          </div>
+          <div class="service-item">
+            <div class="service-label">Пакет от 5 консультаций</div>
+            <div class="service-row"><span class="service-duration"></span><span class="service-price">скидка 15%</span></div>
+          </div>
+          <a href="https://t.me/tina_akimova" target="_blank" class="btn" style="margin-top: 1rem;">Выбрать</a>
+        </div>
+      </div>
+      
+      <div class="support-toggle fade-in">
+        <button class="support-trigger">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="10" x2="12.01" y2="8"></line></svg>
+          <span>Подробнее о поддержке</span>
+        </button>
+        <div class="support-content">
+          <div class="support-section">
+            <p><span class="highlight">*Персонализированные материалы</span> — подкасты, посты, научные публикации, статьи, видео обзоры и т.д.</p>
+          </div>
+          <div class="support-section">
+            <p><span class="highlight">**Поддержка</span> осуществляется текстовыми и короткими голосовыми сообщениями в Telegram. Длительные обсуждения переносятся на следующую сессию.</p>
+            <p style="margin-top: 0.5rem;"><span class="highlight">Время ответа:</span> с 11:00 до 19:00 в течение 6 часов, в острый момент в течение 1 часа.</p>
+          </div>
+          <div class="support-section">
+            <h4>В пакет входит:</h4>
+            <ul>
+              <li>· Индивидуальный чат со мной — <span class="highlight">ежедневно</span></li>
+              <li>· Чек-ин эмоционального состояния — <span class="highlight">1-2 раза в неделю</span></li>
+              <li>· Ответы на вопросы — <span class="highlight">ежедневно</span></li>
+              <li>· Поддержка в острый момент — <span class="highlight">по необходимости</span></li>
+              <li>· Персонализированные материалы — <span class="highlight">1-2 раза в неделю</span></li>
+              <li>· Анализ сложных ситуаций — <span class="highlight">не более 3</span></li>
+            </ul>
+          </div>
+          <div class="support-section">
+            <h4>Что НЕ входит:</h4>
+            <ul>
+              <li>· Длительное обсуждение</li>
+              <li>· Экстренная помощь: <a href="tel:88001004994">8 (800) 100-49-94</a> или <a href="https://psi.mchs.gov.ru/" target="_blank">psi.mchs.gov.ru</a></li>
+              <li>· Консультации по новым проблемам</li>
+              <li>· Поддержка членов семьи</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="fade-in">Связаться со мной</h2>
+      <p class="section-subtitle fade-in">Готовы начать путь к изменениям? Напишите мне в Telegram</p>
+      
+      <div class="contact-card fade-in">
+        <div class="bg-circle-1"></div>
+        <div class="bg-circle-2"></div>
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        </div>
+        <h3>Начните диалог</h3>
+        <p>Напишите мне в Telegram — это самый быстрый и удобный способ связи</p>
+        <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+             ║  📝 ИНСТРУКЦИЯ: КНОПКА "НАПИСАТЬ В TELEGRAM"                                 ║
+             ║  Замените "https://t.me/" на вашу ссылку Telegram                            ║
+             ║  Пример: href="https://t.me/your_username"                                   ║
+             ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+        <a href="https://t.me/tina_akimova" target="_blank" class="btn btn-large">
+          <svg viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem; stroke: currentColor; fill: none; stroke-width: 2;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          Написать в Telegram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+               ║  📝 ИНСТРУКЦИЯ: ИМЯ В ПОДВАЛЕ САЙТА                                          ║
+               ║  Замените "Имя Фамилия" на ваше имя и фамилию                                ║
+               ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+          <h3>Светлана Акимова</h3>
+          <p>Психолог, специалист репарационной психологии и терапии</p>
+        </div>
+        <div>
+          <h4>Быстрые ссылки</h4>
+          <ul>
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#packages">Пакеты услуг</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Услуги</h4>
+          <ul>
+            <li><a href="#packages">Индивидуальная консультация</a></li>
+            <li><a href="#packages">Пакет «Опора»</a></li>
+            <li><a href="#packages">Пакет «Интенсив»</a></li>
+            <li><a href="#packages">Пакет «Уникальный»</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+               ║  📝 ИНСТРУКЦИЯ: ССЫЛКА НА TELEGRAM В ПОДВАЛЕ                                 ║
+               ║  Замените "https://t.me/" на вашу ссылку Telegram                            ║
+               ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+          <a href="https://t.me/tina_akimova" target="_blank" style="display: flex; align-items: center; gap: 0.5rem;">
+            <svg viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem; stroke: currentColor; fill: none; stroke-width: 2;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Telegram
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <!-- ╔══════════════════════════════════════════════════════════════════════════════╗
+             ║  📝 ИНСТРУКЦИЯ: ИМЯ В КОПИРАЙТЕ                                               ║
+             ║  Замените "Имя Фамилия" на ваше имя и фамилию                                 ║
+             ╚══════════════════════════════════════════════════════════════════════════════╝ -->
+        <p>© 2026 Светлана Акимова. Все права защищены</p>
+        <!-- ╔══════════════════════════════════════════════════════════════════════════════════════════════╗
+             ║  📝 ИНСТРУКЦИЯ: ЮРИДИЧЕСКИЕ ССЫЛКИ                                                           ║
+             ║  Замените "#" на ссылки к вашим юридическим документам:                                      ║
+             ║                                                                                              ║
+             ║  • Публичная оферта → href="https://example.com/oferta.pdf"                                  ║
+             ║  • Политика конфиденциальности → href="https://example.com/privacy.pdf"                      ║
+             ║  • Согласие на обработку персональных данных → href="https://example.com/consent.pdf"        ║
+             ║                                                                                              ║
+             ║  Можно указать ссылки на PDF, Google Docs или отдельные страницы сайта                       ║
+             ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ -->
+        <div class="footer-legal">
+          <a href="#">Публичная оферта</a>
+          <span>|</span>
+          <a href="#">Политика конфиденциальности</a>
+          <span>|</span>
+          <a href="#">Согласие на обработку персональных данных</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Подключение файла анимаций (опционально, для расширенных эффектов) -->
+  <!-- <script src="animations.js"></script> -->
+  
+  <script>
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.querySelector('.scroll-progress').style.width = scrolled + '%';
+    });
+
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Create particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Fade-in on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Базовый скрипт (работает без animations.js)
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    
+    // Accordion toggle с плавной анимацией
+    document.querySelectorAll('.accordion-item').forEach(item => {
+      const trigger = item.querySelector('.accordion-trigger');
+      const content = item.querySelector('.accordion-content');
+      if (!trigger || !content) return;
+      
+      content.style.overflow = 'hidden';
+      content.style.transition = 'height 0.3s ease, opacity 0.3s ease';
+      
+      if (item.classList.contains('open')) {
+        content.style.height = 'auto';
+        content.style.opacity = '1';
+        content.style.display = 'block';
+      } else {
+        content.style.height = '0';
+        content.style.opacity = '0';
+        content.style.display = 'block';
+      }
+      
+      trigger.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        if (isOpen) {
+          content.style.height = content.scrollHeight + 'px';
+          content.offsetHeight;
+          content.style.height = '0';
+          content.style.opacity = '0';
+          setTimeout(() => item.classList.remove('open'), 300);
+        } else {
+          item.classList.add('open');
+          content.style.height = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+          setTimeout(() => content.style.height = 'auto', 300);
+        }
+      });
+    });
+    
+    // Support toggle с плавной анимацией
+    const supportToggle = document.querySelector('.support-toggle');
+    const supportTrigger = supportToggle?.querySelector('.support-trigger');
+    const supportContent = supportToggle?.querySelector('.support-content');
+    
+    if (supportTrigger && supportContent) {
+      supportContent.style.overflow = 'hidden';
+      supportContent.style.transition = 'height 0.3s ease, opacity 0.3s ease';
+      supportContent.style.height = '0';
+      supportContent.style.opacity = '0';
+      supportContent.style.display = 'block';
+      
+      supportTrigger.addEventListener('click', () => {
+        const isOpen = supportToggle.classList.contains('open');
+        if (isOpen) {
+          supportContent.style.height = supportContent.scrollHeight + 'px';
+          supportContent.offsetHeight;
+          supportContent.style.height = '0';
+          supportContent.style.opacity = '0';
+          setTimeout(() => supportToggle.classList.remove('open'), 300);
+        } else {
+          supportToggle.classList.add('open');
+          supportContent.style.height = supportContent.scrollHeight + 'px';
+          supportContent.style.opacity = '1';
+          setTimeout(() => supportContent.style.height = 'auto', 300);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
