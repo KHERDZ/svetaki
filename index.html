@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Светлана Акимова — Психолог</title>
+  <title> — Психолог</title>
   <meta name="description" content="Психолог, специалист репарационной психологии и терапии. Индивидуальные консультации и сопровождение.">
   
   <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Светлана Акимова — Психолог">
+  <meta property="og:title" content=" — Психолог">
   <meta property="og:description" content="Психолог, специалист репарационной психологии и терапии. Индивидуальные консультации и сопровождение.">
   
   <!-- Favicon -->
@@ -123,7 +123,7 @@
       padding-top: 1rem; padding-bottom: 1rem;
     }
     .logo { 
-      font-size: 1rem; 
+      font-size: 0.75rem; 
       font-weight: 500; 
       color: var(--primary); 
       text-decoration: none;
@@ -198,7 +198,7 @@
     /* Hero */
     #hero {
       min-height: 100vh; display: flex; align-items: center;
-      padding: 6rem 0 3rem; position: relative; overflow: hidden;
+      padding: 6rem 0 2rem; position: relative; overflow: hidden;
     }
     .hero-bg-1 { 
       position: absolute; top: 5rem; right: 0; width: 24rem; height: 24rem; 
@@ -262,13 +262,14 @@
     
     /* Sections */
     section { padding: 2rem 0; }
-    section h2 { font-size: 2.5rem; font-weight: 400; text-align: center; margin-bottom: 1.5rem; }
-    section .section-subtitle { font-size: 1.25rem; color: var(--muted-foreground); text-align: center; max-width: 42rem; margin: 0 auto 2.5rem; }
+    section h2 { font-size: 2.5rem; font-weight: 400; text-align: center; margin-bottom: 1rem; }
+    section .section-subtitle { font-size: 1.25rem; color: var(--muted-foreground); text-align: center; max-width: 42rem; margin: 0 auto 1.5rem; }
+    #contact { padding-top: 1rem; }
     
     /* Quote */
     .quote-block {
-      background: var(--card); border-radius: 1rem; padding: 2rem 2.5rem;
-      box-shadow: var(--shadow-card); max-width: 56rem; margin: 0 auto 3rem;
+      background: var(--card); border-radius: 1rem; padding: 1.5rem 2rem;
+      box-shadow: var(--shadow-card); max-width: 56rem; margin: 0 auto 2rem;
       position: relative; overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -312,7 +313,7 @@
     .accordion-item {
       background: linear-gradient(135deg, rgba(123,0,28,0.05), var(--card), rgba(123,0,28,0.1));
       border: 1px solid rgba(123,0,28,0.1); border-radius: 1rem;
-      margin-bottom: 1rem; overflow: hidden; box-shadow: var(--shadow-soft);
+      margin-bottom: 0.75rem; overflow: hidden; box-shadow: var(--shadow-soft);
       transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
     .accordion-item:hover {
@@ -320,7 +321,7 @@
       box-shadow: var(--shadow-card);
     }
     .accordion-trigger {
-      width: 100%; padding: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
+      width: 100%; padding: 1.25rem; display: flex; align-items: center; gap: 0.75rem;
       background: none; border: none; cursor: pointer; text-align: left;
     }
     .accordion-icon {
@@ -340,7 +341,7 @@
       transform: rotate(45deg); transition: transform 0.2s;
     }
     .accordion-item.open .accordion-trigger::after { transform: rotate(-135deg); }
-    .accordion-content { padding: 0 1.5rem 1.5rem; display: none; }
+    .accordion-content { padding: 0 1.25rem 1.25rem; display: none; }
     .accordion-item.open .accordion-content { display: block; }
     .accordion-content ul { list-style: none; }
     .accordion-content li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 1.125rem; color: var(--foreground); opacity: 0.8; margin-bottom: 0.75rem; }
@@ -348,7 +349,7 @@
     
     /* Packages */
     #packages { background: rgba(40, 15%, 92%, 0.3); }
-    .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 75rem; margin: 0 auto; margin-top: 2rem; }
+    .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 75rem; margin: 0 auto; margin-top: 1rem; }
     .package {
       background: var(--card); border-radius: 1rem; padding: 1.5rem;
       display: flex; flex-direction: column; box-shadow: var(--shadow-card);
@@ -372,31 +373,75 @@
     
     /* Градиенты для каждого пакета */
     .package.package-olive {
-      background: linear-gradient(135deg, #BAB86C 0%, #D4D39F 50%, #EEEDCE 100%);
+      background: linear-gradient(135deg, #e8f9fb 10%, #f5feff 100%);
+    }
+    .package.package-olive h3,
+    .package.package-olive .package-price,
+    .package.package-olive .service-price {
+      color: #1a1a1a;
+    }
+    .package.package-olive .package-sessions,
+    .package.package-olive .package-period,
+    .package.package-olive .feature-text,
+    .package.package-olive .service-label,
+    .package.package-olive .service-duration {
+      color: rgba(0, 0, 0, 0.75);
+    }
+    .package.package-olive .package-features svg {
+      stroke: #1a1a1a;
     }
     .package.package-olive::before {
-      background: linear-gradient(90deg, var(--olive), var(--olive-light), var(--olive-lighter));
+      background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary-lighter));
     }
     .package.package-olive .card-number,
     .package.package-olive .accordion-icon {
-      background: linear-gradient(135deg, var(--olive), var(--olive-light));
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    }
+
+      .package.package-olive2 {
+      background: linear-gradient(135deg, #8b3a52 10%, #b87088 100%);
+    }
+    .package.package-olive2 h3,
+    .package.package-olive2 .package-price,
+    .package.package-olive2 .service-price {
+      color: #ffffff;
+    }
+    .package.package-olive2 .package-sessions,
+    .package.package-olive2 .package-period,
+    .package.package-olive2 .feature-text,
+    .package.package-olive2 .service-label,
+    .package.package-olive2 .service-duration {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .package.package-olive2 .package-features svg {
+      stroke: #ffffff;
+    }
+    .package.package-olive2::before {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary-lighter));
+    }
+    .package.package-olive2 .package-divider {
+      background: rgba(255,255,255,0.3);
+    }
+    .package.package-olive2 .card-number,
+    .package.package-olive2 .accordion-icon {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
     }
     
     .package.package-red {
-      background: linear-gradient(135deg, #B34961 30%, #E6A8B8 100%);
-      color: var(--primary-foreground);
+      background: linear-gradient(135deg, #d4a0ad 30%, #e9c8d3 100%);
+      color: var(--foreground);
     }
     .package.package-red h3,
     .package.package-red .package-price {
-      color: var(--primary-foreground);
+      color: #2a2a2a;
     }
     .package.package-red .package-sessions,
     .package.package-red .package-period,
     .package.package-red .feature-text {
-      color: rgba(255,255,255,0.9);
+      color: rgba(0, 0, 0, 0.8);
     }
     .package.package-red .package-features svg {
-      stroke: var(--primary-foreground);
+      stroke: #2a2a2a;
     }
     .package.package-red::before {
       background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary-lighter));
@@ -406,6 +451,33 @@
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
     }
     
+    .package.package-unique {
+      background: linear-gradient(135deg, #a84560 30%, #d396ab 100%);
+      color: var(--foreground);
+    }
+    .package.package-unique h3,
+    .package.package-unique .package-price {
+      color: #ffffff;
+    }
+    .package.package-unique .package-sessions,
+    .package.package-unique .package-period,
+    .package.package-unique .feature-text {
+      color: rgba(255, 255, 255, 0.95);
+    }
+    .package.package-unique .package-features svg {
+      stroke: #ffffff;
+    }
+    .package.package-unique::before {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary-lighter));
+    }
+    .package.package-unique .card-number,
+    .package.package-unique .accordion-icon {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    }
+    .package.package-unique .package-divider {
+      background: rgba(255,255,255,0.3);
+    }
+
     .package.highlighted {
       box-shadow: var(--shadow-wine);
     }
@@ -439,8 +511,9 @@
       margin: 1rem 0 0.5rem 0; 
     }
     .package.package-red .package-divider,
+    .package.package-unique .package-divider,
     .package.highlighted .package-divider {
-      background: rgba(255,255,255,0.3);
+      background: rgba(0,0,0,0.2);
     }
     .package-features { list-style: none; margin: 1rem 0; flex-grow: 1; }
     .package-features li { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; }
@@ -478,7 +551,7 @@
     
     /* Support Info */
     .support-toggle {
-      max-width: 56rem; margin: 2.5rem auto 0;
+      max-width: 56rem; margin: 1.5rem auto 0;
       background: var(--card); border-radius: 0.75rem; box-shadow: var(--shadow-soft); overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -508,7 +581,7 @@
       max-width: 42rem; margin: 0 auto;
       background: linear-gradient(135deg, rgba(123,0,28,0.05), var(--card), rgba(123,0,28,0.1));
       border: 1px solid rgba(123,0,28,0.1); border-radius: 1.5rem;
-      padding: 3rem; text-align: center; position: relative; overflow: hidden;
+      padding: 2rem; text-align: center; position: relative; overflow: hidden;
       box-shadow: var(--shadow-wine);
     }
     .contact-card .bg-circle-1 { position: absolute; top: 0; right: 0; width: 8rem; height: 8rem; background: rgba(123,0,28,0.1); border-radius: 50%; filter: blur(48px); }
@@ -524,11 +597,11 @@
     /* Footer */
     footer {
       background: var(--card); border-top: 1px solid var(--border);
-      padding: 3rem 0 1.5rem;
+      padding: 2rem 0 1.25rem;
     }
     .footer-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem; margin-bottom: 2rem;
+      gap: 1.5rem; margin-bottom: 1.5rem;
     }
     footer h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 0.5rem; }
     footer h4 { font-weight: 500; margin-bottom: 0.75rem; }
@@ -776,7 +849,7 @@
           </div>
         </div>
         
-        <div class="package package-red fade-in">
+        <div class="package package-unique fade-in">
           <h3>Уникальный</h3>
           <p class="package-sessions">4 сессии по 90 мин</p>
           <div class="package-price-wrapper">
@@ -789,7 +862,7 @@
           <a href="#contact" class="btn">Выбрать</a>
         </div>
         
-        <div class="package package-olive fade-in">
+        <div class="package package-olive2 fade-in">
           <h3>Индивидуальные сессии</h3>
           <p class="package-sessions" style="opacity: 0;">—</p>
           <div class="service-item">
@@ -890,18 +963,18 @@
             <li><a href="#hero">Главная</a></li>
             <li><a href="#about">Обо мне</a></li>
             <li><a href="#about">Образование</a></li>
-            <li><a href="#about">Отзывы</a></li>
-            <li><a href="#packages">Пакеты услуг</a></li>
+            <li><a href="#about">Пакеты услуг</a></li>
+            <li><a href="#packages">Отзывы</a></li>
             <li><a href="#contact">Контакты</a></li>
           </ul>
         </div>
         <div>
           <h4>Услуги</h4>
           <ul>
-            <li><a href="#packages">Индивидуальная консультация</a></li>
             <li><a href="#packages">Пакет «Опора»</a></li>
             <li><a href="#packages">Пакет «Интенсив»</a></li>
             <li><a href="#packages">Пакет «Уникальный»</a></li>
+            <li><a href="#packages">Индивидуальные сессии</a></li>
           </ul>
         </div>
         <div>
