@@ -1003,43 +1003,17 @@
     </div>
   </footer>
 
-  <!-- Cookie & Privacy Consent Popup -->
+ <!-- Cookie & Privacy Consent Popup -->
 <div id="consent-popup" class="consent-popup">
   <div class="consent-popup-content">
     <p>
-      Мы используем файлы cookie и собираем технические данные (IP-адрес, данные об устройстве) для безопасной работы сайта и анализа посещаемости. 
-      Продолжая использование, вы соглашаетесь с обработкой этих данных в соответствии с 
-      <a href="/privacy" target="_blank">Политикой конфиденциальности</a>.
+      Мы используем файлы cookie и рекомендательные технологии. Пользуясь сайтом, вы соглашаетесь с 
+      <a href="https://disk.yandex.ru/i/6wCgp6cjnRHa3g" target="_blank">Политикой конфиденциальности и обработки персональных данных</a>.
     </p>
     <div class="consent-popup-buttons">
       <button id="accept-all" class="consent-btn consent-btn-primary">Принять всё</button>
       <button id="reject-all" class="consent-btn consent-btn-secondary">Отклонить всё</button>
-      <button id="customize" class="consent-btn consent-btn-link">Настроить</button>
-    </div>
-  </div>
-</div>
-
-<!-- Блок расширенных настроек (скрыт по умолчанию) -->
-<div id="custom-settings" class="custom-settings" style="display: none;">
-  <div class="custom-settings-content">
-    <h3>Настройки конфиденциальности</h3>
-    <div class="setting-item">
-      <input type="checkbox" id="necessary-cookies" checked disabled>
-      <label for="necessary-cookies">
-        <strong>Необходимые</strong> (обязательные для работы сайта)
-        <span class="setting-desc">Без них сайт не сможет функционировать</span>
-      </label>
-    </div>
-    <div class="setting-item">
-      <input type="checkbox" id="analytics-cookies">
-      <label for="analytics-cookies">
-        <strong>Аналитика</strong> (анонимная статистика посещений)
-        <span class="setting-desc">Помогает понять, как используется сайт</span>
-      </label>
-    </div>
-    <div class="setting-buttons">
-      <button id="save-settings" class="consent-btn consent-btn-primary">Сохранить настройки</button>
-      <button id="close-settings" class="consent-btn consent-btn-link">Назад</button>
+      <button id="accept-necessary" class="consent-btn consent-btn-secondary">Принять только обязательные</button>
     </div>
   </div>
 </div>
@@ -1087,6 +1061,8 @@
   font-size: 14px;
   font-weight: 500;
   transition: all 0.2s;
+  flex: 1;
+  min-width: 150px;
 }
 
 .consent-btn-primary {
@@ -1110,79 +1086,20 @@
   border-color: #600016;
 }
 
-.consent-btn-link {
-  background: transparent;
-  color: #7B001C;
-  text-decoration: underline;
-}
-
-.consent-btn-link:hover {
-  color: #600016;
-}
-
-.custom-settings {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  max-width: 500px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  padding: 25px;
-  z-index: 10000;
-}
-
-.custom-settings-content h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.setting-item {
-  margin-bottom: 15px;
-  padding: 12px;
-  border: 1px solid #eee;
-  border-radius: 8px;
-}
-
-.setting-item input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-.setting-item label {
-  display: block;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.setting-desc {
-  display: block;
-  font-size: 12px;
-  color: #666;
-  margin-top: 4px;
-}
-
-.setting-buttons {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-}
-
 @media (max-width: 600px) {
-  .consent-popup, .custom-settings {
+  .consent-popup {
     left: 10px;
     right: 10px;
     bottom: 10px;
   }
   
-  .consent-popup-buttons, .setting-buttons {
+  .consent-popup-buttons {
     flex-direction: column;
   }
   
   .consent-btn {
     width: 100%;
-    text-align: center;
+    min-width: unset;
   }
 }
 </style>
@@ -1191,13 +1108,9 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const popup = document.getElementById('consent-popup');
-  const customSettings = document.getElementById('custom-settings');
   const acceptAllBtn = document.getElementById('accept-all');
   const rejectAllBtn = document.getElementById('reject-all');
-  const customizeBtn = document.getElementById('customize');
-  const saveSettingsBtn = document.getElementById('save-settings');
-  const closeSettingsBtn = document.getElementById('close-settings');
-  const analyticsCheckbox = document.getElementById('analytics-cookies');
+  const acceptNecessaryBtn = document.getElementById('accept-necessary');
 
   // Проверяем, давал ли пользователь уже согласие
   if (!localStorage.getItem('consentGiven')) {
@@ -1207,49 +1120,31 @@ document.addEventListener('DOMContentLoaded', function() {
     popup.style.display = 'none';
   }
 
-  // Принять всё
+  // Принять всё (все куки, включая аналитику)
   acceptAllBtn.addEventListener('click', function() {
     localStorage.setItem('consentGiven', 'all');
     localStorage.setItem('analyticsEnabled', 'true');
     popup.style.display = 'none';
-    console.log('Пользователь принял все условия');
+    console.log('Пользователь принял все условия (все куки)');
   });
 
-  // Отклонить всё (кроме необходимых)
+  // Отклонить всё (только обязательные технические куки)
   rejectAllBtn.addEventListener('click', function() {
     localStorage.setItem('consentGiven', 'necessary');
     localStorage.setItem('analyticsEnabled', 'false');
     popup.style.display = 'none';
-    console.log('Пользователь отклонил аналитические куки');
+    console.log('Пользователь отклонил всё, кроме обязательных');
   });
 
-  // Настроить
-  customizeBtn.addEventListener('click', function() {
+  // Принять только обязательные (аналогично "Отклонить всё", но с позитивной формулировкой)
+  acceptNecessaryBtn.addEventListener('click', function() {
+    localStorage.setItem('consentGiven', 'necessary_only');
+    localStorage.setItem('analyticsEnabled', 'false');
     popup.style.display = 'none';
-    customSettings.style.display = 'block';
+    console.log('Пользователь принял только обязательные куки');
   });
-
-  // Сохранить настройки
-  saveSettingsBtn.addEventListener('click', function() {
-    localStorage.setItem('consentGiven', 'custom');
-    localStorage.setItem('analyticsEnabled', analyticsCheckbox.checked ? 'true' : 'false');
-    customSettings.style.display = 'none';
-    console.log('Настройки сохранены. Аналитика:', analyticsCheckbox.checked);
-  });
-
-  // Закрыть настройки
-  closeSettingsBtn.addEventListener('click', function() {
-    customSettings.style.display = 'none';
-    popup.style.display = 'block';
-  });
-
-  // Инициализация состояния чекбокса из localStorage
-  if (localStorage.getItem('analyticsEnabled') === 'true') {
-    analyticsCheckbox.checked = true;
-  }
 });
 </script>
-
   
   <!-- Подключение файла анимаций (опционально, для расширенных эффектов) -->
   <!-- <script src="animations.js"></script> -->
